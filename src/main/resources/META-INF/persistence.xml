@@ -1,0 +1,48 @@
+<!--
+  ~ Hibernate, Relational Persistence for Idiomatic Java
+  ~
+  ~ License: GNU Lesser General Public License (LGPL), version 2.1 or later.
+  ~ See the lgpl.txt file in the root directory or <http://www.gnu.org/licenses/lgpl-2.1.html>.
+  -->
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+             version="2.0">
+
+    <persistence-unit name="systems.whitestar.welcome.jpa">
+        <description>
+            Persistence unit for the Welcome JPA
+        </description>
+
+        <class>systems.whitestar.welcome.Models.Client</class>
+        <class>systems.whitestar.welcome.Models.ClockEntry</class>
+        <class>systems.whitestar.welcome.Models.EmailRecord</class>
+        <class>systems.whitestar.welcome.Models.Event</class>
+        <class>systems.whitestar.welcome.Models.Meeting</class>
+        <class>systems.whitestar.welcome.Models.Preference</class>
+        <class>systems.whitestar.welcome.Models.Quote</class>
+        <class>systems.whitestar.welcome.Models.Site</class>
+        <class>systems.whitestar.welcome.Models.SiteAsset</class>
+        <class>systems.whitestar.welcome.Models.TimesheetTemplate</class>
+        <class>systems.whitestar.welcome.Models.User</class>
+        <class>systems.whitestar.welcome.Models.UserGroup</class>
+        <class>systems.whitestar.welcome.Models.UserPermission</class>
+        <class>systems.whitestar.welcome.Models.UserRole</class>
+
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+
+            <property name="hibernate.c3p0.min_size" value="1"/>
+            <property name="hibernate.c3p0.max_size" value="10"/>
+            <property name="hibernate.c3p0.timeout" value="1800"/>
+            <property name="hibernate.c3p0.max_statements" value="50"/>
+
+            <property name="hibernate.shutdown" value="true"/>
+        </properties>
+
+    </persistence-unit>
+
+</persistence>
