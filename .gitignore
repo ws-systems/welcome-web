@@ -178,3 +178,5 @@ typings/
 .env
 
 
+/src/main/webapp/assets/
+build_info.properties
