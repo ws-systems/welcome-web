@@ -10,43 +10,50 @@ var gulp = require('gulp'),
 var config = {
     stylesPath: 'styles/sass',
     jsPath: 'styles/js',
+    localLibsPath: 'styles/libs',
     imagesPath: 'images',
     outputDir: 'assets'
 };
 
 // DEPENDENCIES
-gulp.task('libs', ['bootstrap', 'jquery', 'font-awesome', 'sweet-alerts']);
+gulp.task('libs', ['bootstrap-css', 'bootstrap-js', 'jquery', 'font-awesome-css', 'font-awesome-js', 'sweet-alerts']);
 
-gulp.task('bootstrap', function () {
+gulp.task('bootstrap-css', function (cb) {
     pump([
         gulp.src('./node_modules/bootstrap/dist/css/*'),
         filter('**/*.min.*'),
         concat('bootstrap.css'),
         gulp.dest(config.outputDir + '/css')
-    ]);
+    ], cb);
+});
 
+gulp.task('bootstrap-js', function (cb) {
     pump([
         gulp.src('./node_modules/bootstrap/dist/js/*'),
         filter('**/bootstrap.min.*'),
+        gulp.src('./node_modules/popper.js/dist/umd/*'),
+        filter('**/*.min.js'),
         gulp.dest(config.outputDir + '/js')
-    ]);
+    ],cb);
 });
 
-gulp.task('font-awesome', function () {
+gulp.task('font-awesome-css', function (cb) {
     pump([
-        gulp.src('./node_modules/@fortawesome/fontawesome/*'),
+        gulp.src(config.localLibsPath + '/fa/*'),
         filter('**/*.css'),
         concat("fontawesome.css"),
         gulp.dest(config.outputDir + '/css')
-    ]);
+    ], cb);
+});
 
+gulp.task('font-awesome-js', function (cb) {
     pump([
-        gulp.src('./node_modules/@fortawesome/fontawesome/*'),
-        filter('**/index.js'),
+        gulp.src(config.localLibsPath + '/fa/*'),
+        filter('**/*.js'),
         uglify(),
         concat('fontawesome.js'),
         gulp.dest(config.outputDir + '/js')
-    ]);
+    ], cb);
 });
 
 

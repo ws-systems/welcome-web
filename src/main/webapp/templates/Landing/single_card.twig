@@ -1,0 +1,18 @@
+{% include "../header.twig" with {body_classes : concat("background-image", " ", background_image_class)} %}
+{# Remember to set page_title #}
+
+<main role="main" class="container-fluid">
+    <div class="row align-items-center centered">
+        <div class="col-lg-6 col-md-11">
+            <div class="card single-card">
+                <div class="card-body">
+                    {% block card_content %}
+                        This is some text within a card body.
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+{% include "../footer.twig" %}

@@ -1,0 +1,69 @@
+{% extends "single_card.twig" %}
+
+{% set page_title = "Welcome" %}
+{% set background_image_class = "landing" %}
+
+{% block card_content %}
+    <h2 class="text-center">Welcome by <i>WhiteStar</i></h2>
+    <div class="row button-matrix">
+        <div class="col-md-4 col-sm-12 my-sm-1">
+            <button type="button"
+                    class="btn btn-block btn-light"
+                    data-destination="/"
+                    onclick="onLandingMatrixButtonClick(this)">
+                <i class="far fa-address-book fa-3x"></i>
+                <span class="button-description">Client Kiosk</span>
+            </button>
+        </div>
+        <div class="col-md-4 col-sm-12 my-sm-1">
+            <button type="button"
+                    class="btn btn-block btn-light"
+                    data-destination="/qc"
+                    onclick="onLandingMatrixButtonClick(this)">
+                <i class="far fa-clock fa-3x"></i>
+                <span class="button-description">Quick Clock</span>
+            </button>
+        </div>
+        <div class="col-md-4 col-sm-12 my-sm-1">
+            <button type="button"
+                    class="btn btn-block btn-light"
+                    data-destination="/admin"
+                    onclick="onLandingMatrixButtonClick(this)">
+                <i class="far fa-chart-bar fa-3x"></i>
+                <span class="button-description">Console</span>
+            </button>
+        </div>
+    </div>
+    <div class="domain-entry" style="display: none">
+        <form onsubmit="onLandingDomainChoiceSubmit(this); return false;">
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-sm-12">
+                    <p class="text-center">Help us find your site! Enter your site address and we will take
+                        you to where you want to
+                        go!</p>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-11 col-sm-12">
+                    <div class="input-group">
+                        <input type="text"
+                               class="form-control"
+                               aria-label="Site URL"
+                               title="Site URL"
+                               id="subdomain-input"
+                               data-stem="{{ domain_stem }}"
+                               onkeyup="onLandingSubdomainFieldChange(this)">
+                        <span class="input-group-addon">.{{ domain_stem }}</span>
+                    </div>
+                    <button type="submit"
+                            class="btn btn-block btn-primary"
+                            id="landing-continue"
+                            disabled>
+                        Continue
+                    </button>
+                    <input type="submit" hidden>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

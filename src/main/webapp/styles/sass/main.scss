@@ -1,0 +1,9 @@
+@import "libs/functions";
+@import "libs/vars";
+
+@import "single_card";
+
+body, html {
+  height: 100%;
+  display: grid;
+}
