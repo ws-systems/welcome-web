@@ -24,7 +24,6 @@ public class ClockEntry {
 
     @Expose
     @NonNull
-    @Column()
     @ManyToOne
     User user;
 
@@ -45,7 +44,6 @@ public class ClockEntry {
 
     @Expose
     @NonNull
-    @Column(name = "approval_user")
     @ManyToOne
     User approvalUser;
 }

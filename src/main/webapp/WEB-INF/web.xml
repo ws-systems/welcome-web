@@ -6,6 +6,17 @@
         version="3.1">
     <display-name>Welcome - Visitor Tracking and Analytics</display-name>
 
+    <absolute-ordering/>
+
+    <servlet>
+        <servlet-name>Index</servlet-name>
+        <servlet-class>systems.whitestar.welcome.Routes.Index</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Index</servlet-name>
+        <url-pattern>/index</url-pattern>
+    </servlet-mapping>
+
     <servlet>
         <servlet-name>API</servlet-name>
         <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
@@ -17,17 +28,50 @@
 
         <load-on-startup>1</load-on-startup>
     </servlet>
-
     <servlet-mapping>
         <servlet-name>API</servlet-name>
         <url-pattern>/rest/*</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Error</servlet-name>
+        <servlet-class>systems.whitestar.welcome.Routes.Error</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Error</servlet-name>
+        <url-pattern>/error</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>/assets/*</url-pattern>
+    </servlet-mapping>
+
+    <filter>
+        <filter-name>SiteFilter</filter-name>
+        <filter-class>systems.whitestar.welcome.SiteFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>SiteFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!-- TODO Login and Logout for Admin -->
+
+    <error-page>
+        <location>/error</location>
+    </error-page>
+
+    <listener>
+        <listener-class>systems.whitestar.welcome.Init</listener-class>
+    </listener>
+
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>index.html</welcome-file>
+        <welcome-file>index</welcome-file>
     </welcome-file-list>
 </web-app>

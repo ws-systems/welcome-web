@@ -23,13 +23,11 @@ public class Event {
 
     @Expose
     @NonNull
-    @Column()
     @ManyToOne
     Site site;
 
     @Expose
     @NonNull
-    @Column()
     @ManyToOne
     Client client;
 

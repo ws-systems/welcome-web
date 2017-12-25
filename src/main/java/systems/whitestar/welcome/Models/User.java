@@ -1,15 +1,9 @@
 package systems.whitestar.welcome.Models;
 
 import com.google.gson.annotations.Expose;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
+import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * @author Tom Paulus
@@ -21,6 +15,15 @@ import javax.persistence.Table;
 @Data
 @NoArgsConstructor
 public class User extends BasicUser {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    int id;
+
+    @Expose
+    @NonNull
+    @ManyToOne
+    Site site;
+
     @Expose
     @NonNull
     @Column()
@@ -43,13 +46,28 @@ public class User extends BasicUser {
 
     @Expose
     @NonNull
-    @Column()
     @ManyToOne
     UserGroup group;
 
     @Expose
     @NonNull
-    @Column()
     @ManyToOne
     UserRole role;
+
+    @Builder
+    public User(Site site, String name, String email, String loginId, String externalId, UserGroup group, UserRole role) {
+        this.site = site;
+        this.name = name;
+        this.email = email;
+        this.loginId = loginId;
+        this.externalId = externalId;
+        this.group = group;
+        this.role = role;
+    }
+
+    public static User merge(User existing, User updated) {
+        // TODO
+
+        return existing;
+    }
 }

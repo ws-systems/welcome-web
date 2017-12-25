@@ -40,7 +40,7 @@ public class Secret {
         if (mVaultAddr.endsWith("/")) mVaultAddr = mVaultAddr.substring(0, mVaultAddr.length() - 2);
         mRoleId = System.getenv("VAULT_ROLE");
         mSecretId = System.getenv("VAULT_SECRET");
-        mAppName = System.getenv("WWW_APP");
+        mAppName = System.getenv("WELCOME_APP");
 
         initializeVaultConnector();
     }

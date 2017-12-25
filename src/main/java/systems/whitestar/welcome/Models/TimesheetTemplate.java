@@ -25,13 +25,11 @@ public class TimesheetTemplate {
 
     @Expose
     @NonNull
-    @Column()
     @ManyToOne
     Site site;
 
     @Expose
     @NonNull
-    @Column()
     @OneToMany
     List<UserGroup> groups;
 
@@ -56,7 +54,6 @@ public class TimesheetTemplate {
 
     @Expose
     @NonNull
-    @Column(name = "modified_by")
     @ManyToOne
     User modifiedBy;
 }

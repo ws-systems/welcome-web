@@ -14,6 +14,7 @@
             Persistence unit for the Welcome JPA
         </description>
 
+        <class>systems.whitestar.welcome.Models.BasicUser</class>
         <class>systems.whitestar.welcome.Models.Client</class>
         <class>systems.whitestar.welcome.Models.ClockEntry</class>
         <class>systems.whitestar.welcome.Models.EmailRecord</class>

@@ -24,13 +24,11 @@ public class UserRole {
 
     @Expose
     @NonNull
-    @Column()
     @ManyToOne
     Site site;
 
     @Expose
     @NonNull
-    @Column()
     @OneToMany
     List<UserPermission> permissions;
 }

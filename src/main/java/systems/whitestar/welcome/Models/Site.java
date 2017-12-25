@@ -38,7 +38,6 @@ public class Site {
     String subdomain;
 
     @Expose
-    @Column
     @OneToOne
     SiteAsset assets;
 }

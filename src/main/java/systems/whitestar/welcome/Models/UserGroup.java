@@ -23,7 +23,6 @@ public class UserGroup {
 
     @Expose
     @NonNull
-    @Column()
     @ManyToOne
     Site site;
 

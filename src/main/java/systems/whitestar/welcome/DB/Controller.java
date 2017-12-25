@@ -1,8 +1,10 @@
-package systems.whitestar.welcome;
+package systems.whitestar.welcome.DB;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
+import systems.whitestar.welcome.Secret;
 
+import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.util.Properties;
@@ -12,15 +14,15 @@ import java.util.Properties;
  * Created on 12/22/17.
  */
 @Log4j
-public class DB {
+public class Controller {
     @Setter
     private static EntityManagerFactory sessionFactory;
 
     public static void setup() {
         Properties props = new Properties();
-        props.setProperty("javax.persistence.jdbc.url", Secret.getInstance().getSecret("db-url"));
-        props.setProperty("javax.persistence.jdbc.user", Secret.getInstance().getSecret("db-user"));
-        props.setProperty("javax.persistence.jdbc.password", Secret.getInstance().getSecret("db-password"));
+        props.setProperty("javax.persistence.jdbc.url", Secret.getInstance().getSecret("db.url"));
+        props.setProperty("javax.persistence.jdbc.user", Secret.getInstance().getSecret("db.user"));
+        props.setProperty("javax.persistence.jdbc.password", Secret.getInstance().getSecret("db.password"));
 
         try {
             sessionFactory = Persistence.createEntityManagerFactory("systems.whitestar.welcome.jpa", props);
@@ -40,5 +42,9 @@ public class DB {
 
     static EntityManagerFactory getSessionFactory() {
         return sessionFactory;
+    }
+
+    static EntityManager getNewEntityManager() {
+        return getSessionFactory().createEntityManager();
     }
 }

@@ -22,7 +22,6 @@ public class Meeting {
 
     @Expose
     @NonNull
-    @Column()
     @ManyToOne
     Site site;
 

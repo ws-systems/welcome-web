@@ -33,10 +33,8 @@ public class EmailRecord {
     EmailRecipientType recipientType;
 
     @Expose
-    @NonNull
-    @ManyToOne
-    @Column
-    BasicUser recipient;
+    @Column()
+    int recipient;
 
     @Expose
     @NonNull

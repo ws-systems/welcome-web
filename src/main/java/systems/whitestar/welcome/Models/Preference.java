@@ -22,7 +22,6 @@ public class Preference {
 
     @Expose
     @NonNull
-    @Column()
     @ManyToOne
     Site site;
 

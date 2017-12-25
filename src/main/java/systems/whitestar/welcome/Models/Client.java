@@ -3,9 +3,7 @@ package systems.whitestar.welcome.Models;
 import com.google.gson.annotations.Expose;
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * @author Tom Paulus
@@ -17,6 +15,15 @@ import javax.persistence.Table;
 @Data
 @NoArgsConstructor
 public class Client extends BasicUser {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    int id;
+
+    @Expose
+    @NonNull
+    @ManyToOne
+    Site site;
+
     @Expose
     @NonNull
     @Column(name = "first_name")
