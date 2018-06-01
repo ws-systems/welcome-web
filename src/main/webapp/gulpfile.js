@@ -16,7 +16,6 @@ var config = {
 };
 
 // DEPENDENCIES
-gulp.task('libs', ['bootstrap-css', 'bootstrap-js', 'jquery', 'font-awesome-css', 'font-awesome-js', 'sweet-alerts']);
 
 gulp.task('bootstrap-css', function (cb) {
     pump([
@@ -70,6 +69,7 @@ gulp.task('sweet-alerts', function () {
         .pipe(gulp.dest(config.outputDir + '/js'));
 });
 
+gulp.task('libs', gulp.parallel('bootstrap-css', 'bootstrap-js', 'jquery', 'font-awesome-css', 'font-awesome-js', 'sweet-alerts'));
 
 // IMAGES
 gulp.task('images', function () {
@@ -96,7 +96,7 @@ gulp.task('css', function (cb) {
 });
 
 // JS
-gulp.task('js', ['libs'], function (cb) {
+gulp.task('js', gulp.series('libs', function (cb) {
     pump([
             gulp.src(config.jsPath + '/*'),
             filter('**/*.js'),
@@ -106,7 +106,7 @@ gulp.task('js', ['libs'], function (cb) {
         ],
         cb
     );
-});
+}));
 
 // WATCHES
 gulp.task('watch', function () {
@@ -116,5 +116,5 @@ gulp.task('watch', function () {
 });
 
 // BUILD TASKS
-gulp.task('build', ['images', 'css', 'js']);
-gulp.task('default', ['build']);
+gulp.task('build', gulp.parallel('images', 'css', 'js'));
+gulp.task('default', gulp.parallel('build'));
